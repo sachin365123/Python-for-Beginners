@@ -1,60 +1,358 @@
-Linked List Questions and answers
+
+
+https://sachinplacement.blogspot.com/b/post-preview?token=APq4FmA0UDs1eWecyvBjoVT5jl_4PI1-UOsAXTFAofLLCx9T0BI8h-6bklKMJZ7rP7u6Hrg0WhLp3SpwSbbK5SAbrcmn5A0m6EbgTSjTFPmI2QM_9T-VejRwrR9aRoWTTh-4NHNH3XTH&postId=8146402029479152931&type=POST
+http://examworld.co.in/data-structure-questions-and-answers-assignment-3/
 Q.1. Write an algorithm to find the location of an element in the given Linked List. Is the binary search will be suitable for this search? Explain the reason.
+
 Sol. As Linked List does not have sequence of element in linear format so one will have to Generate a  while loop by traversing all nodes comparing the data with K which is the element to search in Linked Link.
+
 Algorithm SEARCH_Node_Linked List (K, Head) // Name of the Function
+
 Begin t=0                       // Variable initialize which will be updated only when K is found
-current =head               // Initially pointer points to head of the Linked List 
+
+current =head               // Initially pointer points to head of the Linked List
+
 while (current !=null)   //Till end of LL
+
 {
+
  if(current ->info=K       // Data of the node
- { t=1 break } 
-current=current->next 
-} 
-if(t=1) 
-print ”Element found” 
+
+ { t=1 break }
+
+current=current->next
+
+}
+
+if(t=1)
+
+print ”Element found”
+
 else
+
 print “Not found" End.   //End of the Algorithm
 
-Use of binary Search in Linked List: it is worthless to use Binary Search in LL in order to find element as time complexity will be O(n), because it is tedious task to find out the middle node of any LL which is pre-requisiteness of Binary Search. 
+
+
+Use of binary Search in Linked List: it is worthless to use Binary Search in LL in order to find element as time complexity will be O(n), because it is tedious task to find out the middle node of any LL which is pre-requisiteness of Binary Search.
+
+
 
 Q.2. Write down an algorithm to delete a node from doubly Linked List.
 
-Sol. Following is the representation of doubly Linked List consisting the header, Next Node, Previous Node address in front and rear part of each node. 
 
- 
-Image Courtesy: https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/ 
+
+Sol. Following is the representation of doubly Linked List consisting the header, Next Node, Previous Node address in front and rear part of each node.
+
+
+
+Image Courtesy: https://www.geeksforgeeks.org/delete-a-node-in-a-doubly-linked-list/
+
+
 
 Algorithm to delete node from any position
+
 %% Input : head {Pointer to the first node of the list}
+
          last {Pointer to the last node of the list}
+
          N {Position to be deleted from list}
+
 Begin:
+
     current ← head;
+
     For i ← 1 to N and current != NULL do
+
         current ← current.next;
+
     End for
+
     If (N == 1) then
+
         deleteFromBeginning()
+
     End if
-    Else if (current == last) then 
+
+    Else if (current == last) then
+
         deleteFromEnd()
+
     End if
+
     Else if (current != NULL) then
+
         current.prev.next ← current.next
+
         If (current.next != NULL) then
+
             current.next.prev ← current.prev;
+
         End if
+
         unalloc (current)
+
         write ('Node deleted successfully from ', N, ' position')
+
     End if
+
     Else then
+
         write ('Invalid position')
+
     End if
+
 End
+
+
 
 In the above algorithm, if node to be deleted is first node then delete first node algorithm will be invoked, in case last node pointer last node will be deleted, now for the any node:
 
+
+
 current.prev.next ← current.next
+
         If (current.next != NULL) then
+
             current.next.prev ← current.prev;
-Address of next node of current will be stored in previous node, in next step; address of previous node will be assign in next node of current node. 
+
+Address of next node of current will be stored in previous node, in next step; address of previous node will be assign in next node of current node.
+
+
+
+Q.3. Write down the algorithm to find out the middle node in singly linked list.
+
+Sol.  There are two methods to solve this question:
+
+Method A: Blind Fold Method
+
+
+
+Traverse the entire linked list and count the total number of nodes. Now traverse the list again till count/2 and return the node at count/2. This is very naïve and foolish idea to find the middle node.
+
+
+
+Algorithm for Method A:
+
+Middle_Node_Linked List (Count, Head) // Name of the Function
+
+Begin t=0, Count=0;                       // Variable initialize to find total nodes in LL
+
+current =head               // Initially pointer points to head of the Linked List
+
+while (current !=null)   //Till end of LL
+
+{
+
+Count++// Data of the node
+
+current=current->next
+
+}
+
+If(current==Null)
+
+Return No node    //No Node is there in LL
+
+If(current==Head)
+
+Return Head     //first Node is middle node
+
+Else
+
+For i ← 1 to Count/2 and current != NULL do
+
+        current ← current.next;
+
+End for
+
+//End of the Algorithm
+
+
+
+
+
+Method B: Two concurrent pointers methods
+
+
+
+Traverse linked list using pointer “a” and pointer “b”. Move pointer “a” by one and pointer “b” by two. When the pointer “a” reaches end slow pointer will reach middle of the linked list. Therefore we will find the middle node.
+
+
+
+Algorithm for Method B:
+
+
+
+
+
+Node *slow_ptr = head;
+
+Node *fast_ptr = head;
+
+
+
+    if (head!=NULL)
+
+    {
+
+        while (fast_ptr != NULL && fast_ptr->next != NULL)
+
+        {
+
+            fast_ptr = fast_ptr->next->next;
+
+            slow_ptr = slow_ptr->next;
+
+        }
+
+        printf("The middle element is [%d]\n\n", slow_ptr->data);
+
+    }
+
+
+
+Support Video: https://www.youtube.com/watch?v=Uk-PkL5WMMY
+
+
+
+Q.4. Write down the algorithm to add two linked lists. For example node1=561 and node2=246 then output should be num=807
+
+Sol.
+
+Steps to be taken place in order to write algorithm:
+
+
+
+Step 1: Count the size of both Linked Lists.
+
+Step 2: if size is same then perform the addition else find out the difference of both LLs.
+
+Step 3: take care of Carry if there is while adding nodes value and add this carry in next nodes addition     as per basic Decimal Addition rule.
+
+Step 4: Put the values in separate Stacks in then add these values.
+
+Step 5: output the final addition of two LLs.
+
+
+
+Algorithm:
+
+----------------------------------------------------------------------------------------------------------------
+
+Node* addUsingReverse(Node*h1, Node*h2)
+
+{
+
+    reverseLL(&h1);
+
+    reverseLL(&h2);
+
+    Node*a = h1;
+
+    Node*b = h2;
+
+    int carry = 0;
+
+    Node* c = NULL;
+
+    while(a != NULL || b!= NULL)
+
+    {
+
+        int sum = carry;
+
+        if(a != NULL)
+
+            sum += a->data;
+
+        if(b != NULL)
+
+            sum += b->data;
+
+        carry = sum / 10;
+
+        sum = sum % 10;
+
+        appendNode(&c, sum);
+
+        if(a != NULL)
+
+            a = a->link;
+
+        if(b != NULL)
+
+            b = b->link;
+
+    }
+
+    if(carry != 0)
+
+        appendNode(&c, carry);
+
+    reverseLL(&h1);
+
+    reverseLL(&h2);
+
+    reverseLL(&c);
+
+    return c;
+
+}
+
+------------------------------------------------------------------------------------------------------------
+
+Courtesy by: http://www.ritambhara.in/add-numbers-given-in-the-form-of-linked-list/
+
+
+
+Q.5. Write down the algorithm to Sort the elements of doubly Linked List.
+
+Sol.  For the sorting of elements in LL we can initialize the temp1 and tem2 variable and also third variable T.
+
+Algorithm Sort_Doubly_Linked_List ()                         // Name of the Function
+
+Begin temp1=head                                                  // initialize from header node
+Repeat 3 and 4 till while (temp1 !=null)             // Initially pointer points to head of the Linked List
+If(temp1->info > temp2->info)                           //compare the values of nodes
+do (i), (ii), (iii) and (iv)
+
+                        T=temp1->info                          //swapping the values of temp1 and temp2
+                      temp1->info > temp2->info
+                                                                    iii.            temp2->info > T
+
+                    temp2=temp2-> next;
+temp1=temp1->next;
+//End of the Algorithm
+
+
+
+
+
+
+******* Best of Luck *********
+
+
+
+WITH REGARDS
+SACHIN KUMAR SAXENA
+With you, In Christ, In His Mission
+Assistant Professor, CSE DEPARTMENT,
+
+College of Engineering Roorkee, Roorkee,
+
+Uttarakhand
+
++91-8909603708
+at November 19, 2018   
+Email This
+BlogThis!
+Share to Twitter
+Share to Facebook
+Share to Pinterest
+
+Labels: #Computer_Science #Question_Solution, #Data Structure, #Linked List, #NET, #NTA, #UGC
+No comments:
+Post a Comment
+ 
+ 
