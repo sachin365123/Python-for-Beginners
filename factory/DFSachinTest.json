@@ -1,0 +1,9 @@
+{
+	"name": "DFSachinTest",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ade0c05a-f996-48d9-9dd3-e8a5e7383dc0",
+		"tenantId": "076af1d9-53a7-48e4-9c43-8ae1c16db3e2"
+	}
+}
